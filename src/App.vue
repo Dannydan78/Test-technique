@@ -1,21 +1,18 @@
-<!-- src/views/NotificationPage.vue -->
-<script setup>
-import BaseNotification from './components/BaseNotification.vue'
-</script>
-
 <template>
-  <div class="container">
-    <div class="">
-      <BaseNotification type="Danger" />
-      <BaseNotification type="Warning" />
-      <BaseNotification type="CheckCircle" />
-      <BaseNotification type="Info" />
-    </div>
-  </div>
+  <BaseNotification v-for="notification in notifications" :key="notification.titre" :notification="notification" />
 </template>
 
-<style scoped>
-.container {
-  max-width: 800px;
-}
-</style>
+<script setup>
+import { ref } from 'vue';
+import BaseNotification from './components/BaseNotification.vue';
+
+const notifications = ref([
+  { titre: "Danger", path: "/icons/Danger.svg" },
+  { titre: "Warning", path: "/icons/Warning.svg" },
+  { titre: "Success", path: "/icons/CheckCircle.svg" },
+  { titre: "Info", path: "/icons/Info.svg" },
+  
+]);
+
+
+</script>

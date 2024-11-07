@@ -19,8 +19,13 @@
 import BaseNotification from './components/BaseNotification.vue';
 import { useNotificationStore } from '../stores/notificationsStore.js';
 
+// Pour utiliser le store Pinia 
 const notificationStore = useNotificationStore();
+
+// Getter
 const allNotifications = notificationStore.getAllNotifications();
+
+// Mappe le titre des notifications au SVG 
 const notificationIcons = {
   Danger: "/icons/Danger.svg",
   Warning: "/icons/Warning.svg",
@@ -28,10 +33,12 @@ const notificationIcons = {
   Info: "/icons/Info.svg"
 };
 
-// Fonction pour ajouter une notification
+// Fonction pour ajouter une notification random
 function addNotification() {
   const titres = ["Danger", "Warning", "Success", "Info"];
   const randomTitre = titres[Math.floor(Math.random() * titres.length)];
+  
+  // Création objet notification random
   const randomNotification = {
     id: Date.now(),
     titre: randomTitre,
@@ -39,6 +46,7 @@ function addNotification() {
   };
   notificationStore.addNotification(randomNotification);
 }
+
 </script>
 
 <style scoped>

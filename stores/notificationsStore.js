@@ -9,14 +9,15 @@ export const useNotificationStore = defineStore('notifications', () => {
   function addNotification(notification) {
     // Ajoute la notification et vérifie la limite de 5
     if (notifications.value.length >= 5) {
-      notifications.value.shift(); // Supprime la plus ancienne si la limite est atteinte
+      // Supprime la plus ancienne 
+      notifications.value.shift(); 
     }
     notifications.value.push(notification);
   }
 
+  // Suppression de notification par l'id
   function removeNotification(id) {
     notifications.value = notifications.value.filter(n => n.id !== id);
-
   }
 
   // Getters
